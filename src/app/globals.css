@@ -1,0 +1,246 @@
+/* ===== FONT IMPORTS (MUST COME FIRST) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap');
+
+/* ===== TAILWIND ===== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+  --background: #080a0e;
+  --bg2: #0f1117;
+  --bg3: #16181d;
+  --foreground: #d4d0c8;
+  --primary: #c6a85b;
+  --primary-hover: #e8cc8a;
+  --teal: #54ab8c;
+  --purple: #9b8fc8;
+  --blue: #7b9ec9;
+  --muted: #6b6760;
+  --border: #1e2028;
+
+  --font-sans: 'Outfit', sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+.dark {
+  --background: #080a0e;
+  --bg2: #0f1117;
+  --bg3: #16181d;
+  --foreground: #d4d0c8;
+  --primary: #c6a85b;
+  --primary-hover: #e8cc8a;
+  --muted: #6b6760;
+  --border: #1e2028;
+}
+
+/* ===== BASE BODY ===== */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  color: #f0ece0;
+  line-height: 1.1;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 4vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 3vw, 1.6rem); }
+
+/* ===== GOLD DIVIDER ===== */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border),
+    var(--primary) 50%,
+    var(--border),
+    transparent
+  );
+  opacity: 0.5;
+  margin: 40px 0;
+}
+
+/* ===== EYEBROW LABEL ===== */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before,
+.eyebrow::after {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.4;
+}
+
+/* ===== SECTION LABEL ===== */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+/* ===== NOTE BOX ===== */
+.note-box {
+  background: rgba(198, 168, 91, 0.04);
+  border: 1px solid rgba(198, 168, 91, 0.15);
+  border-left: 3px solid var(--primary);
+  border-radius: 4px;
+  padding: 16px 20px;
+}
+.note-box p {
+  font-size: 0.82rem;
+  color: #8a8680;
+  line-height: 1.75;
+}
+.note-box strong {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.card:hover {
+  border-color: var(--primary);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 14px;
+    font-family: var(--font-sans) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: black !important;
+    border-color: #ccc !important;
+  }
+  button:not(.print-keep),
+  .no-print {
+    display: none !important;
+  }
+  .avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .force-page-break {
+    page-break-before: always;
+    break-before: always;
+  }
+  .break-before-page {
+    break-before: page;
+  }
+  #print-section {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 750px;
+  }
+  a {
+    text-decoration: none;
+    color: black !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 20mm;
+  }
+}
+
+/* ===== FORM STYLES ===== */
+input,
+textarea,
+select {
+  background-color: #0b0c10;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  transition: border-color 0.2s;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+
+/* ===== LINKS ===== */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
