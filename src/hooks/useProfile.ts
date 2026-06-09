@@ -7,7 +7,6 @@ import { getStoredMode } from '@/hooks/useMode';
 export interface UserProfile {
   fullName: string;
   birthDate: string;
-  birthTime: string;
 }
 
 const PROFILE_KEY = 'astroguider_profile_v1';

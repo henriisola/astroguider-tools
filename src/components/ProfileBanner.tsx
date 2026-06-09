@@ -64,9 +64,6 @@ export default function ProfileBanner({ onEditChange }: Props) {
           {birthFormatted && (
             <span className="text-zinc-600"> · {birthFormatted}</span>
           )}
-          {profile.birthTime && (
-            <span className="text-zinc-600"> · {profile.birthTime}</span>
-          )}
         </p>
       </div>
       <button

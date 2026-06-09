@@ -20,14 +20,12 @@ export default function ProfilePage() {
   const [fullName, setFullName] = useState('');
   // Local form state for the <input type="date"> uses ISO; storage uses DD/MM/YYYY.
   const [birthDateISO, setBirthDateISO] = useState('');
-  const [birthTime, setBirthTime] = useState('');
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     if (profile) {
       setFullName(profile.fullName);
       setBirthDateISO(ddmmyyyyToISO(profile.birthDate));
-      setBirthTime(profile.birthTime ?? '');
     }
   }, [profile]);
 
@@ -36,7 +34,6 @@ export default function ProfilePage() {
     save({
       fullName: fullName.trim(),
       birthDate: isoToDDMMYYYY(birthDateISO),
-      birthTime,
     });
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);
@@ -46,7 +43,6 @@ export default function ProfilePage() {
     clear();
     setFullName('');
     setBirthDateISO('');
-    setBirthTime('');
   };
 
   if (!loaded) return null;
@@ -103,22 +99,6 @@ export default function ProfilePage() {
             </p>
           </div>
 
-          <div>
-            <label className="block text-[10px] uppercase tracking-widest text-zinc-500 mb-2">
-              Birth time{' '}
-              <span className="text-zinc-700 normal-case tracking-normal">(optional)</span>
-            </label>
-            <input
-              type="time"
-              value={birthTime}
-              onChange={e => setBirthTime(e.target.value)}
-              className={inputCls}
-            />
-            <p className="text-zinc-700 text-[10px] mt-1">
-              Used for Chinese Zodiac hour sign. Leave blank if unknown.
-            </p>
-          </div>
-
           {/* Actions */}
           <div className="flex gap-3 pt-1">
             <button
@@ -157,7 +137,6 @@ export default function ProfilePage() {
                 <span className="text-zinc-600 text-[11px] w-12 flex-shrink-0">Born:</span>
                 <span className="text-zinc-200 text-[11px]">
                   {profile.birthDate}
-                  {profile.birthTime && ` at ${profile.birthTime}`}
                 </span>
               </div>
             </div>

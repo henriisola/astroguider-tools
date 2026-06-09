@@ -19,7 +19,6 @@ const inputCls =
 export default function PrivateNumerologyPage() {
   const [fullName, setFullName] = useState('');
   const [birthdate, setBirthdate] = useState('');
-  const [birthtime, setBirthtime] = useState('');
   const [numero, setNumero] = useState<any | null>(null);
   const [aiInsights, setAIInsights] = useState<any | null>(null);
   const [show, setShow] = useState(false);
@@ -37,7 +36,6 @@ export default function PrivateNumerologyPage() {
     if (p) {
       if (p.fullName && !fullName) setFullName(p.fullName);
       if (p.birthDate && !birthdate) setBirthdate(ddmmyyyyToISO(p.birthDate));
-      if (p.birthTime && !birthtime) setBirthtime(p.birthTime);
     }
     setProfileLoaded(true);
   }, []);
@@ -84,7 +82,6 @@ export default function PrivateNumerologyPage() {
   const resetForm = () => {
     setFullName('');
     setBirthdate('');
-    setBirthtime('');
     setNumero(null);
     setAIInsights(null);
     setShow(false);
