@@ -193,12 +193,12 @@ export default function YearCycleTimeline({ birthDate }: Props) {
           return (
             <div
               key={year}
-              className={`flex items-center gap-4 px-4 py-3 rounded-lg transition-colors ${
+              className={`flex items-center gap-5 px-4 py-3 rounded-lg transition-colors ${
                 isCurrent ? 'bg-zinc-800/60' : 'hover:bg-zinc-800/30'
               }`}
             >
               {/* Year */}
-              <span className={`text-xs font-mono w-12 flex-shrink-0 ${
+              <span className={`text-xs font-mono w-14 flex-shrink-0 tabular-nums tracking-wider ${
                 isCurrent ? 'text-zinc-200 font-bold' : isPast ? 'text-zinc-600' : 'text-zinc-400'
               }`}>
                 {year}

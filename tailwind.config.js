@@ -34,9 +34,9 @@ module.exports = {
         border: 'var(--border)',
       },
       fontFamily: {
-        sans:  ['Outfit', 'sans-serif'],
-        serif: ['Cormorant Garamond', 'serif'],
-        mono:  ['DM Mono', 'monospace'],
+        sans:  ['var(--font-sans)'],
+        serif: ['var(--font-serif)'],
+        mono:  ['var(--font-mono)'],
       },
       fontSize: {
         'eyebrow': ['0.6rem', { letterSpacing: '0.25em', lineHeight: '1' }],

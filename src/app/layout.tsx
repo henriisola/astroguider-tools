@@ -1,16 +1,5 @@
 import '@/app/globals.css';
-import { Geist, Geist_Mono, Playfair_Display } from 'next/font/google';
-import { Cormorant_Garamond, DM_Mono, Outfit } from 'next/font/google';
-
-const geistSans = Geist({
-  subsets: ['latin'],
-  variable: '--font-geist-sans',
-});
-
-const geistMono = Geist_Mono({
-  subsets: ['latin'],
-  variable: '--font-geist-mono',
-});
+import { Playfair_Display } from 'next/font/google';
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
@@ -34,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <head />
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} dark bg-background text-foreground antialiased font-sans`}>
+      <body className={`${playfairDisplay.variable} dark bg-background text-foreground antialiased font-sans`}>
         {children}
       </body>
     </html>
